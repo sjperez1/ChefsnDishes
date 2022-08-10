@@ -1,0 +1,25 @@
+@using ChefsnDishes.Models;
+@model Chef;
+
+<div class="container w-75 mx-auto">
+    <h1 class="mb-4">Add a Chef!</h1>
+    <a href="/">Home</a>
+    <form asp-action="CreateChef" asp-controller="Chef" method="post">
+        <span asp-validation-for="FirstName"></span>
+        <div class="formline mb-3">
+            <label asp-for="FirstName"></label>
+            <input class="form-control-sm" asp-for="FirstName">
+        </div>
+        <span asp-validation-for="LastName"></span>
+        <div class="formline mb-3">
+            <label asp-for="LastName"></label>
+            <input class="form-control-sm" asp-for="LastName">
+        </div>
+        <span asp-validation-for="DoB"></span>
+        <div class="formline mb-3">
+            <label asp-for="DoB"></label>
+            <input class="form-control-sm" asp-for="DoB">
+        </div>
+        <button class="btn btn-outline-dark" type="submit">Add Chef</button>
+    </form>
+</div>

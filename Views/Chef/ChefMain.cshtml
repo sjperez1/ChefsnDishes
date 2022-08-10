@@ -1,0 +1,23 @@
+@model List<Chef>
+
+
+<h1>Chefs | <a href="/dishes">Dishes</a></h1>
+<a href="/new">Add a Chef</a>
+<div>
+    <h3>Check out our roster of Chefs!</h3>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th># of Dishes</th>
+        </tr>
+        @foreach(Chef item in Model)
+        {
+            <tr>
+                <td>@item.FirstName @item.LastName</td>
+                <td>@(@DateTime.Now.Year - @item.DoB.Year)</td>
+                <td>@item.CreatedDishes.Count</td>
+            </tr>
+        }
+    </table>
+</div>
