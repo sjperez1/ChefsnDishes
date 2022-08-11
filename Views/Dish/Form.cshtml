@@ -22,9 +22,9 @@
                 <textarea asp-for="Description" cols="45" rows="8"></textarea>
             </div>
         </div>
-        <span asp-validation-for="ChefId"></span>
         <div class="formline mb-3">
             <label asp-for="ChefId"></label>
+            <span asp-validation-for="ChefId"></span>
             <select asp-for="ChefId" class="form-control-sm">
                 <option hidden disabled selected></option>
                 @foreach(Chef chef in ViewBag.AllChefs)

@@ -26,10 +26,11 @@ public class Dish
     public DateTime CreatedAt {get; set;} = DateTime.Now;
     public DateTime UpdatedAt {get; set;} = DateTime.Now;
 
-    [Required(ErrorMessage = "You must select a chef")]
+    [Required]
     [Display(Name = "Chef")]
     public int ChefId {get;set;}
 
     // like the reverse of the list in chef class. This will have the creator. This is pointing to a whole chef instance.
+    // this is an object and MySQL can't store that, so it is just skipped when adding things to the database
     public Chef? Creator {get;set;}
 }

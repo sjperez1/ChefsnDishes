@@ -15,7 +15,10 @@
         {
             <tr>
                 <td>@item.FirstName @item.LastName</td>
-                <td>@(@DateTime.Now.Year - @item.DoB.Year)</td>
+                @{
+                    DateTime dt = (DateTime)item.DoB;
+                }
+                <td>@(DateTime.Now.Year - @dt.Year)</td>
                 <td>@item.CreatedDishes.Count</td>
             </tr>
         }

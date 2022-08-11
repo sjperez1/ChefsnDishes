@@ -25,17 +25,23 @@ public class DishController : Controller
     [HttpGet("dishes/new")]
     public IActionResult DisplayForm()
     {
-        ViewBag.AllChefs = _context.Chefs.OrderByDescending(Chef => Chef.CreatedAt).ToList();
+        ViewBag.AllChefs = _context.Chefs.OrderByDescending(Chef => Chef.CreatedAt);
         return View("Form");
     }
 
     [HttpPost("create")]
     public IActionResult CreateDish(Dish newDish)
     {
+        Chef? creator = _context.Chefs.FirstOrDefault(c => c.ChefId == newDish.ChefId);
+        if(creator == null)
+        {
+            ModelState.AddModelError("ChefId", "Must select a chef");
+        }
         if(ModelState.IsValid == false)
         {
             return DisplayForm();
         }
+        
         _context.Add(newDish);
         _context.SaveChanges();
         return RedirectToAction("Main");
